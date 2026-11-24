@@ -39,7 +39,7 @@
 }
 
 body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-family: 'Noto Sans KR', 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   min-height: 100vh;
   background: linear-gradient(135deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
   color: var(--text-main);
@@ -92,6 +92,7 @@ body {
 }
 
 /* 5. 메인 카드 */
+.login-card,
 .todo-card {
   background: var(--card-bg);
   backdrop-filter: blur(12px);
@@ -103,6 +104,146 @@ body {
   display: flex;
   flex-direction: column;
   gap: 20px;
+}
+
+.login-card {
+  gap: 18px;
+}
+
+.login-heading {
+  text-align: left;
+}
+
+.login-kicker {
+  display: inline-block;
+  margin-bottom: 8px;
+  color: var(--primary-color);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+}
+
+.login-heading h2 {
+  margin-bottom: 4px;
+  color: var(--text-main);
+  font-size: 1.35rem;
+  letter-spacing: -0.03em;
+}
+
+.login-heading p {
+  color: var(--text-muted);
+  font-size: 0.88rem;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.auth-view[hidden] {
+  display: none;
+}
+
+.login-label {
+  margin-top: 4px;
+  color: var(--text-main);
+  font-size: 0.84rem;
+  font-weight: 600;
+}
+
+.login-input {
+  width: 100%;
+  min-height: 48px;
+  padding: 12px 14px;
+  border: 1.5px solid #cbd5e1;
+  border-radius: var(--radius-md);
+  outline: none;
+  background: #f8fafc;
+  color: var(--text-main);
+  font: inherit;
+  font-size: 0.92rem;
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast), background-color var(--transition-fast);
+}
+
+.login-input::placeholder {
+  color: #94a3b8;
+}
+
+.login-input:focus {
+  border-color: var(--primary-color);
+  background: #fff;
+  box-shadow: var(--shadow-input-focus);
+}
+
+.login-btn {
+  min-height: 48px;
+  margin-top: 10px;
+  border: 0;
+  border-radius: var(--radius-md);
+  background: var(--primary-color);
+  color: #fff;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color var(--transition-fast), transform var(--transition-fast);
+}
+
+.login-btn:hover {
+  background: #4f46e5;
+}
+
+.login-btn:active {
+  transform: translateY(1px);
+}
+
+.login-btn:focus-visible,
+.auth-switch:focus-visible {
+  outline: 3px solid rgba(99, 102, 241, 0.3);
+  outline-offset: 2px;
+}
+
+.login-switch-copy {
+  margin-top: 2px;
+  color: var(--text-muted);
+  font-size: 0.84rem;
+  text-align: center;
+}
+
+.auth-switch {
+  padding: 2px 4px;
+  border: 0;
+  background: none;
+  color: var(--primary-color);
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.login-field-hint {
+  margin-top: -6px;
+  color: var(--text-muted);
+  font-size: 0.76rem;
+  line-height: 1.5;
+}
+
+.login-message:empty {
+  display: none;
+}
+
+.login-message[data-state="error"] {
+  color: var(--danger-color);
+}
+
+.login-message[data-state="info"] {
+  color: var(--primary-color);
+}
+
+.login-note {
+  margin-top: 2px;
+  color: var(--text-muted);
+  font-size: 0.78rem;
+  line-height: 1.55;
 }
 
 /* 6. 입력 폼 영역 */
@@ -383,8 +524,17 @@ body {
     padding: 16px 12px;
   }
   
+  .login-card,
   .todo-card {
     padding: 18px 14px;
+  }
+
+  .login-heading h2 {
+    font-size: 1.2rem;
+  }
+
+  .login-switch-copy {
+    font-size: 0.82rem;
   }
   
   .app-title {

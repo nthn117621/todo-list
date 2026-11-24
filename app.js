@@ -20,6 +20,66 @@ const emptyState = document.getElementById('empty-state');
 const totalCountEl = document.getElementById('total-count');
 const completedCountEl = document.getElementById('completed-count');
 
+// The auth panel is a UI-only preview until a real authentication service is configured.
+const loginForm = document.getElementById('login-form');
+const signupForm = document.getElementById('signup-form');
+const showSignupButton = document.getElementById('show-signup');
+const showLoginButton = document.getElementById('show-login');
+const authKicker = document.getElementById('auth-kicker');
+const authTitle = document.getElementById('login-title');
+const authSubtitle = document.getElementById('auth-subtitle');
+const authMessage = document.getElementById('auth-message');
+
+function setAuthMessage(message, state = 'info') {
+  authMessage.textContent = message;
+  authMessage.dataset.state = state;
+}
+
+function showLoginView() {
+  loginForm.hidden = false;
+  signupForm.hidden = true;
+  authKicker.textContent = 'SIGN IN';
+  authTitle.textContent = '다시 만나 반가워요';
+  authSubtitle.textContent = 'ID와 비밀번호를 입력해 주세요.';
+  authMessage.textContent = '';
+  delete authMessage.dataset.state;
+}
+
+function showSignupView() {
+  loginForm.hidden = true;
+  signupForm.hidden = false;
+  authKicker.textContent = 'CREATE ACCOUNT';
+  authTitle.textContent = '새 계정 만들기';
+  authSubtitle.textContent = '사용할 ID와 비밀번호를 입력해 주세요.';
+  authMessage.textContent = '';
+  delete authMessage.dataset.state;
+}
+
+showSignupButton.addEventListener('click', showSignupView);
+showLoginButton.addEventListener('click', showLoginView);
+
+loginForm.addEventListener('submit', (event) => {
+  event.preventDefault();
+  setAuthMessage('인증 서비스가 설정되지 않아 입력한 정보를 확인할 수 없습니다. 입력값은 저장되지 않았습니다.');
+});
+
+signupForm.addEventListener('submit', (event) => {
+  event.preventDefault();
+
+  const password = document.getElementById('signup-password');
+  const passwordConfirm = document.getElementById('signup-password-confirm');
+  if (password.value !== passwordConfirm.value) {
+    passwordConfirm.setCustomValidity('비밀번호가 일치하지 않습니다.');
+    passwordConfirm.reportValidity();
+    passwordConfirm.focus();
+    passwordConfirm.setCustomValidity('');
+    setAuthMessage('비밀번호가 일치하지 않습니다.', 'error');
+    return;
+  }
+
+  setAuthMessage('인증 서비스가 설정되지 않아 계정을 만들 수 없습니다. 입력값은 저장되지 않았습니다.');
+});
+
 // LocalStorage에 저장할 때 사용할 키(Key) 이름
 const STORAGE_KEY = 'simple_todolist_items';
 
@@ -216,4 +276,3 @@ todoForm.addEventListener('submit', (event) => {
 // 5. 초기 실행 (화면이 로드될 때 첫 렌더링)
 // --------------------------------------------------
 render();
-todoInput.focus();
