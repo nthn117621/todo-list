@@ -26,12 +26,12 @@
 
     <section class="login-card" aria-labelledby="login-title">
       <div class="login-heading">
-        <span class="login-kicker">SIGN IN</span>
+        <span class="login-kicker" id="auth-kicker">SIGN IN</span>
         <h2 id="login-title">다시 만나 반가워요</h2>
-        <p>로그인 화면 미리보기</p>
+        <p id="auth-subtitle">ID와 비밀번호를 입력해 주세요.</p>
       </div>
 
-      <form class="login-form" aria-describedby="login-preview-note">
+      <form class="login-form auth-view" id="login-form" aria-describedby="login-preview-note">
         <label class="login-label" for="login-id">ID</label>
         <input
           class="login-input"
@@ -40,6 +40,7 @@
           name="login-id"
           placeholder="아이디를 입력하세요"
           autocomplete="username"
+          required
         >
 
         <label class="login-label" for="login-password">Password</label>
@@ -50,13 +51,56 @@
           name="login-password"
           placeholder="비밀번호를 입력하세요"
           autocomplete="current-password"
+          required
         >
 
-        <button class="login-btn" type="button" disabled>로그인</button>
-        <p class="login-note" id="login-preview-note" role="note">
-          인증 연동이 없어 로그인, 로그아웃 및 접근 보호는 동작하지 않습니다.
-        </p>
+        <button class="login-btn" type="submit">로그인</button>
+        <p class="login-switch-copy">처음 방문하셨나요? <button class="auth-switch" id="show-signup" type="button">회원가입</button></p>
       </form>
+
+      <form class="login-form auth-view" id="signup-form" aria-describedby="login-preview-note" hidden>
+        <label class="login-label" for="signup-id">ID</label>
+        <input
+          class="login-input"
+          type="text"
+          id="signup-id"
+          name="signup-id"
+          placeholder="사용할 아이디를 입력하세요"
+          autocomplete="username"
+          required
+        >
+        <p class="login-field-hint">ID 중복 확인은 인증 서비스 연결 후 사용할 수 있습니다.</p>
+
+        <label class="login-label" for="signup-password">Password</label>
+        <input
+          class="login-input"
+          type="password"
+          id="signup-password"
+          name="signup-password"
+          placeholder="비밀번호를 입력하세요"
+          autocomplete="new-password"
+          required
+        >
+
+        <label class="login-label" for="signup-password-confirm">Password 확인</label>
+        <input
+          class="login-input"
+          type="password"
+          id="signup-password-confirm"
+          name="signup-password-confirm"
+          placeholder="비밀번호를 다시 입력하세요"
+          autocomplete="new-password"
+          required
+        >
+
+        <button class="login-btn" type="submit">가입하기</button>
+        <p class="login-switch-copy">이미 계정이 있나요? <button class="auth-switch" id="show-login" type="button">로그인</button></p>
+      </form>
+
+      <p class="login-note login-message" id="auth-message" role="status" aria-live="polite"></p>
+      <p class="login-note" id="login-preview-note" role="note">
+        UI 미리보기입니다. 계정이나 비밀번호를 저장·검증하지 않으며, 아래 Todo는 로그인 없이 사용할 수 있어 보호되지 않습니다.
+      </p>
     </section>
 
     <!-- 메인 카드 컨테이너 -->

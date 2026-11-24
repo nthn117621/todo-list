@@ -141,6 +141,10 @@ body {
   gap: 9px;
 }
 
+.auth-view[hidden] {
+  display: none;
+}
+
 .login-label {
   margin-top: 4px;
   color: var(--text-main);
@@ -181,12 +185,58 @@ body {
   color: #fff;
   font: inherit;
   font-weight: 600;
-  cursor: not-allowed;
-  opacity: 0.62;
+  cursor: pointer;
+  transition: background-color var(--transition-fast), transform var(--transition-fast);
 }
 
-.login-btn:disabled {
-  cursor: not-allowed;
+.login-btn:hover {
+  background: #4f46e5;
+}
+
+.login-btn:active {
+  transform: translateY(1px);
+}
+
+.login-btn:focus-visible,
+.auth-switch:focus-visible {
+  outline: 3px solid rgba(99, 102, 241, 0.3);
+  outline-offset: 2px;
+}
+
+.login-switch-copy {
+  margin-top: 2px;
+  color: var(--text-muted);
+  font-size: 0.84rem;
+  text-align: center;
+}
+
+.auth-switch {
+  padding: 2px 4px;
+  border: 0;
+  background: none;
+  color: var(--primary-color);
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.login-field-hint {
+  margin-top: -6px;
+  color: var(--text-muted);
+  font-size: 0.76rem;
+  line-height: 1.5;
+}
+
+.login-message:empty {
+  display: none;
+}
+
+.login-message[data-state="error"] {
+  color: var(--danger-color);
+}
+
+.login-message[data-state="info"] {
+  color: var(--primary-color);
 }
 
 .login-note {
@@ -481,6 +531,10 @@ body {
 
   .login-heading h2 {
     font-size: 1.2rem;
+  }
+
+  .login-switch-copy {
+    font-size: 0.82rem;
   }
   
   .app-title {
