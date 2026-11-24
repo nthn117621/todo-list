@@ -8,6 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -22,6 +23,41 @@
       <h1 class="app-title">Simple To-Do List</h1>
       <p class="app-subtitle">기초 학습자를 위한 단일 사용자 할 일 관리 앱</p>
     </header>
+
+    <section class="login-card" aria-labelledby="login-title">
+      <div class="login-heading">
+        <span class="login-kicker">SIGN IN</span>
+        <h2 id="login-title">다시 만나 반가워요</h2>
+        <p>로그인 화면 미리보기</p>
+      </div>
+
+      <form class="login-form" aria-describedby="login-preview-note">
+        <label class="login-label" for="login-id">ID</label>
+        <input
+          class="login-input"
+          type="text"
+          id="login-id"
+          name="login-id"
+          placeholder="아이디를 입력하세요"
+          autocomplete="username"
+        >
+
+        <label class="login-label" for="login-password">Password</label>
+        <input
+          class="login-input"
+          type="password"
+          id="login-password"
+          name="login-password"
+          placeholder="비밀번호를 입력하세요"
+          autocomplete="current-password"
+        >
+
+        <button class="login-btn" type="button" disabled>로그인</button>
+        <p class="login-note" id="login-preview-note" role="note">
+          인증 연동이 없어 로그인, 로그아웃 및 접근 보호는 동작하지 않습니다.
+        </p>
+      </form>
+    </section>
 
     <!-- 메인 카드 컨테이너 -->
     <main class="todo-card">
